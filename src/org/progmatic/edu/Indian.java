@@ -18,6 +18,26 @@ public class Indian {
         this.tools = tools;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getTribe() {
+        return tribe;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public List<String> getTools() {
+        return tools;
+    }
+
     @Override
     public String toString() {
         return "Indián{" +

@@ -13,7 +13,12 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        indians();
+        List<Indian> indians = new ArrayList<>(indians());
+
+        //1.
+        System.out.println(indians.size() + " indián szerepel a leltárban");
+
+
     }
 
     public static List<Indian> indians() throws FileNotFoundException {
@@ -21,12 +26,12 @@ public class Main {
         List<Indian> indians = new ArrayList<>();
         while (sc.hasNextLine()) {
             String[] splitit = sc.nextLine().split(",");
-            System.out.println(splitit[4]);
+           // System.out.println(splitit[4]);
             int age = Integer.valueOf(splitit[3]);
             String[] tools = splitit[4].split("\\|");
             List<String> toollist = Arrays.asList(tools);
             Indian indian = new Indian(splitit[0], splitit[1], splitit[2], age, toollist);
-            System.out.println(indian);//ez csak egy ellenörző
+          //  System.out.println(indian);//ez csak egy ellenörző
             indians.add(indian);
         }
         return indians;
