@@ -18,6 +18,14 @@ public class Main {
         //1.
         System.out.println(indians.size() + " indián szerepel a leltárban");
 
+        //2.
+
+        HashSet<List<String>> set = new HashSet<>();
+        for (Indian indian : indians) {
+            set.add(indian.getTools());
+        }
+
+        System.out.println(numOfTribeMembers("Apache", indians));
 
     }
 
@@ -35,5 +43,15 @@ public class Main {
             indians.add(indian);
         }
         return indians;
+    }
+
+    public static int numOfTribeMembers(String tribe, List<Indian> indians) {
+        int sum = 0;
+        for (Indian indian : indians) {
+            if (indian.getTribe().equals(tribe)) {
+                sum++;
+            }
+        }
+        return sum;
     }
 }
