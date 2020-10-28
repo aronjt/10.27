@@ -38,7 +38,14 @@ public class Main {
         //9.
         System.out.println(mostPopulatedTribe(reservation));
         //10.
+        System.out.println("Férfiak aránya a törzsekben");
         menRate(reservation);
+        //11.
+        System.out.println(mostTomahawk(reservation));
+        //12.
+        System.out.println(mostToolByKids(reservation));
+        //13.
+        toolsPerTribe(reservation);
     }
 
     //Beolvasás
@@ -166,6 +173,62 @@ public class Main {
     public static void menRate(HashMap<String, List<Indian>> indians) {
         for (String tribeName : indians.keySet()) {
             System.out.println(tribeName + " " + countSexes(indians, "f", tribeName) + ":" + countSexes(indians, "n", tribeName));
+        }
+    }
+
+    //11.
+
+    public static String mostTomahawk(HashMap<String, List<Indian>> indians) {
+        Iterator<String> iterator = indians.keySet().iterator();
+        int sum = 0;
+        String tribe = null;
+        while (iterator.hasNext()) {
+            String actualTribe = iterator.next();
+            Iterator<Indian> member = indians.get(actualTribe).listIterator();
+            int tribeMember = 0;
+            while (member.hasNext()) {
+                Indian actualIndian = member.next();
+                if (actualIndian.getTools().contains("tomahawk") && actualIndian.getSex().equals("f")) {
+                    tribeMember++;
+                }
+            }
+            if (tribeMember > sum) {
+                sum = tribeMember;
+                tribe = actualTribe;
+            }
+        }
+        return tribe;
+    }
+
+    //12.
+
+    public static String mostToolByKids(HashMap<String, List<Indian>> indian) {
+        int sum = 0;
+        String tribe = null;
+        for (String tribeName : indian.keySet()) {
+            int toolCounter = 0;
+            for (Indian member : indian.get(tribeName)) {
+                if (member.getAge() < 18) {
+                    toolCounter += member.getTools().size();
+                }
+            }
+            if (toolCounter > sum) {
+                sum = toolCounter;
+                tribe = tribeName;
+            }
+        }
+        return tribe;
+    }
+
+    //13.
+
+    public static void toolsPerTribe(HashMap<String, List<Indian>> indians) {
+        for (String tribeName : indians.keySet()) {
+            int sumTools = 0;
+            for (Indian indian : indians.get(tribeName)) {
+                sumTools += indian.getTools().size();
+            }
+            System.out.println(tribeName + " " + sumTools);
         }
     }
 }
