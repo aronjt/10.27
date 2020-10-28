@@ -35,6 +35,10 @@ public class Main {
         System.out.println(indiansWithBow(indians));
         //8.
         System.out.println(Arrays.toString(bearFoot(indians)));
+        //9.
+        System.out.println(mostPopulatedTribe(reservation));
+        //10.
+        menRate(reservation);
     }
 
     //Beolvasás
@@ -138,5 +142,30 @@ public class Main {
         bearFoot[0] = sumBearFoot;
         bearFoot[1] = avgAge;
         return bearFoot;
+    }
+
+    //9.
+
+    public static String mostPopulatedTribe(HashMap<String, List<Indian>> indians) {
+        Iterator<String> iterator = indians.keySet().iterator();
+        int sum = 0;
+        String tribe = "Csicska";
+        while (iterator.hasNext()) {
+            String s = iterator.next();
+            if (indians.get(s).size() > sum) {
+                sum = indians.get(s).size();
+                tribe = s;
+            }
+        }
+        System.out.print(sum + " ");
+        return tribe;
+    }
+
+    //10.
+
+    public static void menRate(HashMap<String, List<Indian>> indians) {
+        for (String tribeName : indians.keySet()) {
+            System.out.println(tribeName + " " + countSexes(indians, "f", tribeName) + ":" + countSexes(indians, "n", tribeName));
+        }
     }
 }
