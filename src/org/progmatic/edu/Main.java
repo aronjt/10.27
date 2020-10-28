@@ -27,7 +27,14 @@ public class Main {
         System.out.println(numOfTribeMembers("Apache", indians));
         //4.
         System.out.println("Férfi nő arány: " + countSexes(reservation, "f", "Apache") + ":" + countSexes(reservation, "n", "Apache"));
-
+        //5.
+        System.out.println(oldStuff(reservation, "Apache"));
+        //6.
+        System.out.println(avgToolsPerPerson(indians));
+        //7.
+        System.out.println(indiansWithBow(indians));
+        //8.
+        System.out.println(Arrays.toString(bearFoot(indians)));
     }
 
     //Beolvasás
@@ -79,5 +86,57 @@ public class Main {
             }
         }
         return counter;
+    }
+
+    //5. feladat
+
+    public static ArrayList<String> oldStuff(HashMap<String, List<Indian>> indians, String tribe) {
+        ArrayList<String> names = new ArrayList<>();
+        for (Indian indian : indians.get(tribe)) {
+            if (indian.getTools().contains("békepipa")) {
+                names.add(indian.getName());
+            }
+        }
+        return names;
+    }
+
+    //6. feladat
+
+    public static float avgToolsPerPerson(List<Indian> indians) {
+        float total = 0;
+        for (Indian indian : indians) {
+            total += indian.getTools().size();
+        }
+        return total/indians.size();
+    }
+
+    //7. feladat
+
+    public static int indiansWithBow(List<Indian> indians) {
+        int bows = 0;
+        for (Indian indian : indians) {
+            if (indian.getTools().contains("íj")) {
+                bows++;
+            }
+        }
+        return bows;
+    }
+
+    //8. feladat
+
+    public static int[] bearFoot(List<Indian> indians) {
+        int[] bearFoot = new int[2];
+        int sumAge = 0;
+        int sumBearFoot = 0;
+        for (Indian indian : indians) {
+            if (!indian.getTools().contains("mokaszin")) {
+                sumAge += indian.getAge();
+                sumBearFoot++;
+            }
+        }
+        int avgAge = sumAge / sumBearFoot;
+        bearFoot[0] = sumBearFoot;
+        bearFoot[1] = avgAge;
+        return bearFoot;
     }
 }
