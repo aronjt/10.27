@@ -1,7 +1,5 @@
 package org.progmatic.edu;
 
-import com.sun.tools.attach.AgentInitializationException;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -39,7 +37,7 @@ public class Main {
         while (sc.hasNextLine()) {
             String[] splitit = sc.nextLine().split(",");
            // System.out.println(splitit[4]);
-            int age = Integer.valueOf(splitit[3]);
+            int age = Integer.parseInt(splitit[3]);
             String[] tools = splitit[4].split("\\|");
             List<String> toollist = Arrays.asList(tools);
             Indian indian = new Indian(splitit[0], splitit[1], splitit[2], age, toollist);
