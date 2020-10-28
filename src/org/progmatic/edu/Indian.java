@@ -38,7 +38,7 @@ public class Indian {
         return tools;
     }
 
-  /*  @Override
+    @Override
     public String toString() {
         return "Indián{" +
                 "name='" + name + '\'' +
@@ -47,5 +47,5 @@ public class Indian {
                 ", age=" + age +
                 ", tools=" + tools +
                 '}';
-    } */
+    }
 }
